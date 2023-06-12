@@ -33,7 +33,7 @@ namespace ProjectManager.Server.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return BadRequest(e);
+                return BadRequest(e.Message);
             }
         }
         [HttpGet("GetDocumentationInfoFull")]
@@ -46,7 +46,7 @@ namespace ProjectManager.Server.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return BadRequest(e);
+                return BadRequest(e.Message);
             }
         }
     }
