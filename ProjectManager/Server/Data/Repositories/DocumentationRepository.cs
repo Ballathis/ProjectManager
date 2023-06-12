@@ -26,7 +26,7 @@ namespace ProjectManager.Server.Data.Repositories
                 {
                     ProjectCode = d.DesignObject.Project.Code,
                     ObjectCode = d.DesignObject.FullCode,
-                    Mark = new Shared.Models.Mark() { Id = d.Mark.Id, Name = d.Mark.Name, ShortName = d.Mark.ShortName },
+                    Mark = new Mark() { Id = d.Mark.Id, Name = d.Mark.Name, ShortName = d.Mark.ShortName },
                     DocumentationNumber = d.Number,
                     FullCode = $"{d.DesignObject.Project.Code}-{d.DesignObject.FullCode}-{d.Mark.ShortName}{d.Number}"
                 }).ToListAsync();
@@ -39,7 +39,7 @@ namespace ProjectManager.Server.Data.Repositories
                 {
                     ProjectCode = d.DesignObject.Project.Code,
                     ObjectCode = d.DesignObject.FullCode,
-                    Mark = new Shared.Models.Mark() { Id = d.Mark.Id, Name = d.Mark.Name, ShortName = d.Mark.ShortName },
+                    Mark = new Mark() { Id = d.Mark.Id, Name = d.Mark.Name, ShortName = d.Mark.ShortName },
                     DocumentationNumber = d.Number,
                     FullCode = $"{d.DesignObject.Project.Code}-{d.DesignObject.FullCode}-{d.Mark.ShortName}{d.Number}"
                 }).ToListAsync();
