@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectManager.Server.Data;
 
@@ -11,9 +12,11 @@ using ProjectManager.Server.Data;
 namespace ProjectManager.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230612151338_add_DocumentationCounter")]
+    partial class add_DocumentationCounter
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,19 +85,11 @@ namespace ProjectManager.Server.Migrations
 
             modelBuilder.Entity("ProjectManager.Server.Data.Entities.DocumentationCounter", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int>("DocumentationCount")
                         .HasColumnType("int");
 
                     b.Property<int>("IdDesignObject")
                         .HasColumnType("int");
-
-                    b.HasKey("Id");
 
                     b.HasIndex("IdDesignObject")
                         .IsUnique();

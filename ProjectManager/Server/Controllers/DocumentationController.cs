@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Server.Data.Repositories.Interfaces;
 using ProjectManager.Server.Data;
 using Microsoft.Extensions.Logging;
+using ProjectManager.Shared.Models;
 
 namespace ProjectManager.Server.Controllers
 {
@@ -36,12 +37,38 @@ namespace ProjectManager.Server.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpGet("GetDocumentationInfoFull")]
-        public async Task<IActionResult> GetDocumentationInfoFull(int id)
+        [HttpGet("GetDocumentationInfoFullByObject")]
+        public async Task<IActionResult> GetDocumentationInfoFullByObject(int id)
         {
             try
             {
                 return Ok(await _documentationRepository.GetDocumentationInfoFullByObjectIdAsync(id));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpGet("GetDocumentationInfoFullByProject")]
+        public async Task<IActionResult> GetDocumentationInfoFullByProject(int id)
+        {
+            try
+            {
+                return Ok(await _documentationRepository.GetDocumentationInfoFullByProjectIdAsync(id));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpPost("AddDocumentation")]
+        public async Task<IActionResult> AddDocumentation([FromBody] Documentation documentation)
+        {
+            try
+            {
+                return Ok(await _documentationRepository.AddDocumentation(documentation));
             }
             catch (Exception e)
             {
